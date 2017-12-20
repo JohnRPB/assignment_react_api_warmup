@@ -91,7 +91,7 @@ class App extends Component {
 
     const options = {
       headers,
-      method: "DELETE"
+      method:'delete' 
     };
 
     fetch(`https://reqres.in/api/users/${e.target.value}`, options)
@@ -100,17 +100,11 @@ class App extends Component {
         if (!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`);
         }
-
         console.log(response);
         // Otherwise, extract the response into json
-        return response.json();
+        return response;
       })
-      .then(json => {
-        // Update the user list and isFetching.
-        // Reset the form in a callback after state is set.
-        console.log(json);
-      })
-     
+          
   };
 
   render() {
@@ -118,7 +112,7 @@ class App extends Component {
     return (
       <div className="App">
         <JumbotronInstance />
-
+// modify state
         <UserList users={users} isFetching={isFetching} onClick={this.onDelete}/>
 
         <br />
